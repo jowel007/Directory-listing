@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DashboardController;
 
 
 Route::get('/admin/login',[AdminAuthController::class,'Login'])->name('admin.login');
+Route::get('/admin/forgot-password',[AdminAuthController::class,'PasswordRequest'])->name('admin.password.request');
 
 
 

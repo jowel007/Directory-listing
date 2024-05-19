@@ -23,7 +23,7 @@
               <h4>Update Profile</h4>
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.profile.update') }}" method="post" >
+                <form action="{{ route('admin.profile.update') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="row">

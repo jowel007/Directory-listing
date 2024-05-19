@@ -49,9 +49,9 @@
                                     <div class="invalid-feedback">
                                         Please fill in your email
                                     </div>
-                                    @if($errors->get('email'))
+                                    {{-- @if($errors->get('email'))
                                         <code>{{ $errors->get('email') }}</code>
-                                    @endif
+                                    @endif --}}
                                 </div>
 
                                 <div>

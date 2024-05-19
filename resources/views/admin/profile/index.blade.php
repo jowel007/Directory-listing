@@ -23,7 +23,9 @@
               <h4>Update Profile</h4>
             </div>
             <div class="card-body">
-                <form action="" method="post">
+                <form action="{{ route('admin.profile.update') }}" method="post" >
+                    @csrf
+                    @method('PUT')
                     <div class="row">
 
                         <div class="col-md-6">

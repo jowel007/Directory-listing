@@ -148,13 +148,15 @@
             </div>
             <div class="my_listing list_mar">
               <h4>change password</h4>
-              <form>
+              <form action="{{ route('user.update-password') }}" method="POST">
+                @csrf
+                @method('PUT')
                 <div class="row">
                   <div class="col-xl-4 col-md-6">
                     <div class="my_listing_single">
                       <label>current password</label>
                       <div class="input_area">
-                        <input type="password" placeholder="Current Password">
+                        <input type="password" name="current_password" placeholder="Current Password">
                       </div>
                     </div>
                   </div>
@@ -162,7 +164,7 @@
                     <div class="my_listing_single">
                       <label>new password</label>
                       <div class="input_area">
-                        <input type="password" placeholder="New Password">
+                        <input type="password" name="password" placeholder="New Password">
                       </div>
                     </div>
                   </div>
@@ -170,33 +172,18 @@
                     <div class="my_listing_single">
                       <label>confirm password</label>
                       <div class="input_area">
-                        <input type="password" placeholder="Confirm Password">
+                        <input type="password" name="password_confirmation" placeholder="Confirm Password">
                       </div>
                     </div>
                   </div>
                   <div class="col-12">
-                    <button type="submit" class="read_btn">upload</button>
+                    <button type="submit" class="read_btn">Update</button>
                   </div>
                 </div>
               </form>
             </div>
 
-            <div class="my_listing list_mar">
-              <form>
-                <h4>Profile Banner Image</h4>
-                <div class="row">
-                  <div class="col-xl-6 col-md-8 col-lg-6">
-                    <div class="profile_pic_upload banner_pic_upload">
-                      <img src="images/login_breadcrumb.jpg" alt="img" class="imf-fluid w-100">
-                      <input type="file">
-                    </div>
-                  </div>
-                  <div class="col-12">
-                    <button type="submit" class="read_btn">upload</button>
-                  </div>
-                </div>
-              </form>
-            </div>
+            
           </div>
         </div>
       </div>

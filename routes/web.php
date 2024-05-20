@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\Frontend\DashboardController;
 use App\Http\Controllers\Frontend\FrontendController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Frontend\ProfileController;
 
 
 /*
@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
 
 Route::group(['middleware'=>'auth','prefix'=> 'user','as'=> 'user.'], function(){
     Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');  // user.dashboard
+    Route::get('/profile',[ProfileController::class,'Userprofile'])->name('profile');
 });
 
 require __DIR__.'/auth.php';

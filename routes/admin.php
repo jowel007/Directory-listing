@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\ProfileController;
 
 Route::get('/admin/login',[AdminAuthController::class,'Login'])->name('admin.login');
@@ -24,6 +25,10 @@ Route::group([
     Route::get('/profile',[ProfileController::class,'index'])->name('profile');
     Route::put('/profile',[ProfileController::class,'update'])->name('profile.update');
     Route::put('/profile-password',[ProfileController::class,'PasswordUpdate'])->name('profile-password.update');
+
+    
+    //hero route
+    Route::get('/hero',[HeroController::class,'index'])->name('hero.index');
 
 
 });

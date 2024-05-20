@@ -80,7 +80,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">About <span class="text-danger">*</span></label>
-                                <textarea name="about" value="{!! $user->about !!}" class="form-control"></textarea>
+                                <textarea name="about" class="form-control">{!! $user->about !!}</textarea>
                             </div>
                         </div>
 

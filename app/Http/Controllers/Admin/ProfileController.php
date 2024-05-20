@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Traits\FileUploadTraits;
 use Auth;
+use Illuminate\Http\RedirectResponse;
 
 class ProfileController extends Controller
 {
@@ -43,4 +44,21 @@ class ProfileController extends Controller
 
         return redirect()->back();
     }
+
+    public function PasswordUpdate(Request $request) : RedirectResponse{
+        // dd($request->all());
+        $request->validate([
+            'password' => ['required','min:5', 'confirmed']
+        ]);
+        $user = Auth::user();
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        toastr()->success('Password Updated Successfully !');
+
+        return redirect()->back();
+    }
+
+
+
 }

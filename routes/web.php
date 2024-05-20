@@ -35,6 +35,8 @@ Route::middleware('auth')->group(function () {
 Route::group(['middleware'=>'auth','prefix'=> 'user','as'=> 'user.'], function(){
     Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');  // user.dashboard
     Route::get('/profile',[ProfileController::class,'Userprofile'])->name('profile');
+    Route::put('/profile',[ProfileController::class,'Updateprofile'])->name('update');
+
 });
 
 require __DIR__.'/auth.php';

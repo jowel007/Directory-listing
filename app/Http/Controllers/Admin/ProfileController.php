@@ -24,8 +24,8 @@ class ProfileController extends Controller
         // dd($avaterPath);
 
         $user = Auth::user();
-        $user->avatar = !empty($avaterPath) ? $avaterPath : '';
-        $user->banner = !empty($bannerPath) ? $bannerPath : '';
+        $user->avatar = !empty($avaterPath) ? $avaterPath : $request->old_avatar;
+        $user->banner = !empty($bannerPath) ? $bannerPath : $request->old_banner;
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;

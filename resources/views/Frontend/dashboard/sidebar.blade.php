@@ -1,3 +1,8 @@
+
+@php
+    use Auth as auth; 
+@endphp
+
 <div class="col-lg-3">
     <div class="dashboard_sidebar">
       <span class="close_icon"><i class="far fa-times"></i></span>
@@ -15,7 +20,15 @@
         <li><a href="dsahboard_message.html"><i class="far fa-comments-alt"></i> Message</a></li>
         <li><a href="{{ route('user.profile') }}"><i class="far fa-user"></i> My Profile</a></li>
 
-        <li><a href="#"><i class="far fa-sign-out-alt"></i> Logout</a></li>
+
+
+        <li>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                this.closest('form').submit();"><i class="far fa-sign-out-alt"></i> Logout</a>
+            </form>
+        </li>
       </ul>
     </div>
   </div>

@@ -23,13 +23,15 @@
               <h4>Update Hero</h4>
             </div>
             <div class="card-body">
-                <form action="#" method="post" enctype="multipart/form-data">
+                <form action="{{ route('admin.hero.update') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
                     <div class="form-group">
                         <label for="">Background <span class="text-danger">*</span> </label>
-                        <div id="image-preview" class="image-preview avatar-preview">
+                        <div id="image-preview" class="image-preview background-preview">
                             <label for="image-upload" id="image-label">Choose File</label>
-                            <input type="file" name="avatar" id="image-upload">
-                            <input type="hidden" name="old_avatar" value="">
+                            <input type="file" name="background" id="image-upload">
+                            <input type="hidden" name="old_background" value="">
                         </div>
                     </div>
                     <div class="from-group">
@@ -54,3 +56,17 @@
 
   </section>
 @endsection
+
+{{--
+<script>
+    $(document).ready(function(){
+        $('.background-preview').css({
+            'background-image': 'url({{ asset($hero->avatar) }})',
+            'background-repeat': 'no-repeat',
+            'background-size': 'cover',
+            'background-position': 'center'
+        });
+    })
+
+
+</script> --}}

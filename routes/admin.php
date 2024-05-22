@@ -26,10 +26,10 @@ Route::group([
     Route::put('/profile',[ProfileController::class,'update'])->name('profile.update');
     Route::put('/profile-password',[ProfileController::class,'PasswordUpdate'])->name('profile-password.update');
 
-    
+
     //hero route
     Route::get('/hero',[HeroController::class,'index'])->name('hero.index');
-
+    Route::put('/hero',[HeroController::class,'update'])->name('hero.update');
 
 });
 

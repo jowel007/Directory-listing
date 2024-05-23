@@ -11,13 +11,14 @@
 
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/modules/summernote/summernote-bs4.css">
-
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    <link rel="stylesheet" href="//cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css">
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/style.css">
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/components.css">
 
-    @vite(['resources/js/app.js','resources/css/app.css'])
+
 
 
 <body>
@@ -53,6 +54,7 @@
 <script src="{{ asset('admin') }}/assets/modules/summernote/summernote-bs4.js"></script>
 <script src="{{ asset('admin') }}/assets/modules/chocolat/dist/js/jquery.chocolat.min.js"></script>
 
+<script src="//cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
 
 <script src="{{ asset('admin') }}/assets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>

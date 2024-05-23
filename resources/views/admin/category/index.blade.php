@@ -10,7 +10,6 @@
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard.index') }}">Dashboard</a></div>
                 <div class="breadcrumb-item">Categories</div>
-
             </div>
         </div>
 
@@ -23,7 +22,7 @@
                             <h4>All Categories</h4>
                         </div>
                         <div class="card-body">
-
+                            {{ $dataTable->table() }}
                         </div>
                     </div>
                 </div>
@@ -33,7 +32,6 @@
     </section>
 @endsection
 
-
-<script>
-
-</script>
+@push('scripts')
+    {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
+@endpush

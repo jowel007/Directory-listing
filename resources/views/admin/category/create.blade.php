@@ -27,18 +27,52 @@
                             <form action="{{ route('admin.hero.update') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
-                                <div class="form-group">
-                                    <label for="">Background <span class="text-danger">*</span> </label>
-                                    <div id="image-preview" class="image-preview">
-                                        <label for="image-upload" id="image-label">Choose File</label>
-                                        <input type="file" name="background" id="image-upload">
-                                        <input type="hidden" name="old_background" value="">
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="">Icon Image <span class="text-danger">*</span> </label>
+                                            <div id="image-preview" class="image-preview">
+                                                <label for="image-upload" id="image-label">Choose File</label>
+                                                <input type="file" name="image_icon" id="image-upload">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="">Background Image <span class="text-danger">*</span></label>
+                                            <div id="image-preview" class="image-preview">
+                                                <label for="image-upload" id="image-label">Choose File</label>
+                                                <input type="file" name="background_image" id="image-upload">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+
+
                                 <div class="from-group">
-                                    <label for="">Title</label>
-                                    <input type="text" name="title" value="" id="" class="form-control">
+                                    <label for="">Name <span class="text-danger">*</span></label>
+                                    <input type="text" name="name" value="" id="" class="form-control">
                                 </div>
+
+                                &nbsp;
+                                <div class="from-group">
+                                    <label for="">Show at Home <span class="text-danger">*</span></label>
+                                    <select name="show_at_home" id="" class="form-control">
+                                        <option value="0">Yes</option>
+                                        <option value="1">No</option>
+                                    </select>
+                                </div>
+                                &nbsp;
+                                <div class="from-group">
+                                    <label for="">Status <span class="text-danger">*</span></label>
+                                    <select name="status" id="" class="form-control">
+                                        <option value="1">Active</option>
+                                        <option value="0">InActive</option>
+                                    </select>
+                                </div>
+
                                 &nbsp;
                                 <div class="from-group">
                                     <button type="submit" class="btn btn-primary">Create</button>
@@ -56,6 +90,4 @@
 @endsection
 
 
-<script>
-
-</script>
+<script></script>

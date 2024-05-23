@@ -24,9 +24,9 @@
                             <h4>Create Category</h4>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('admin.hero.update') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('admin.category.store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
-                                @method('PUT')
+
 
                                 <div class="row">
                                     <div class="col-md-6">
@@ -42,9 +42,9 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="">Background Image <span class="text-danger">*</span></label>
-                                            <div id="image-preview" class="image-preview">
-                                                <label for="image-upload" id="image-label">Choose File</label>
-                                                <input type="file" name="background_image" id="image-upload">
+                                            <div id="image-preview-2" class="image-preview">
+                                                <label for="image-upload-2" id="image-label-2">Choose File</label>
+                                                <input type="file" name="background_image" id="image-upload-2">
                                             </div>
                                         </div>
                                     </div>
@@ -60,8 +60,8 @@
                                 <div class="from-group">
                                     <label for="">Show at Home <span class="text-danger">*</span></label>
                                     <select name="show_at_home" id="" class="form-control">
-                                        <option value="0">Yes</option>
-                                        <option value="1">No</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
                                     </select>
                                 </div>
                                 &nbsp;
@@ -90,4 +90,17 @@
 @endsection
 
 
-<script></script>
+@push('scripts')
+    <script>
+        $.uploadPreview({
+            input_field: "#image-upload-2",   // Default: .image-upload
+            preview_box: "#image-preview-2",  // Default: .image-preview
+            label_field: "#image-label-2",    // Default: .image-label
+            label_default: "Choose File",   // Default: Choose File
+            label_selected: "Change File",  // Default: Change File
+            no_label: false,                // Default: false
+            success_callback: null          // Default: null
+        });
+    </script>
+@endpush
+

@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HeroController;
+use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\ProfileController;
 
 Route::get('/admin/login',[AdminAuthController::class,'Login'])->name('admin.login');
@@ -34,6 +35,11 @@ Route::group([
 
     /** Category Routes */
     Route::resource('/category', CategoryController::class);
+
+    /** Location Routes */
+    Route::resource('/location', LocationController::class);
+
+
 
 });
 

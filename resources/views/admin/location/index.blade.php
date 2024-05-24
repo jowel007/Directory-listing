@@ -21,7 +21,7 @@
                         <div class="card-header">
                             <h4>All Location</h4>
                             <div class="card-header-action">
-                                <a href="{{ route('admin.category.create') }}" class="btn btn-info"><i class="fas fa-plus"></i> Create Category</a>
+                                <a href="{{ route('admin.location.create') }}" class="btn btn-info"><i class="fas fa-plus"></i> Create Category</a>
                             </div>
                         </div>
                         <div class="card-body">

@@ -34,7 +34,22 @@ class CategoryDataTable extends DataTable
             ->addColumn('background', function($query){
                 return '<img width="80" src="'.asset($query->background_image).'" >';
             })
-            ->rawColumns(['icon','background','action'])
+            ->addColumn('show_at_home', function($query){
+                if($query->show_at_home == 1){
+                    return "<span class='badge badge-primary'>Yes</span>";
+                }else {
+                    return "<span class='badge badge-danger'>No</span>";
+                }
+                
+            })
+            ->addColumn('status', function($query){
+                if($query->status == 1){
+                    return "<span class='badge badge-warning'>Yes</span>";
+                }else {
+                    return "<span class='badge badge-danger'>No</span>";
+                }
+            })
+            ->rawColumns(['icon','background','action','show_at_home','status'])
             ->setRowId('id');
     }
 
@@ -79,6 +94,11 @@ class CategoryDataTable extends DataTable
             Column::make('name')->width(200),
             Column::make('icon')->width(200),
             Column::make('background'),
+            
+            Column::make('show_at_home'),
+            Column::make('status'),
+
+            
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)

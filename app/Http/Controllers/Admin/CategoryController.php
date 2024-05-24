@@ -9,7 +9,6 @@ use App\Http\Requests\Admin\CategoryUpdateRequest;
 use App\Models\Category;
 use App\Traits\FileUploadTraits;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Str;
 
 class CategoryController extends Controller
@@ -56,6 +55,11 @@ class CategoryController extends Controller
 
     }
 
+    public function show()
+    {
+        // return view('home');
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -93,6 +97,12 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category =  Category::findOrFail($id);
+        $this->deleteFile($category->image_icon);
+        $this->deleteFile($category->background_image);
+
+        $category->delete();
+
+        return response(['status' => 'success','message' =>'Item Deleted Successfully !']);
     }
 }

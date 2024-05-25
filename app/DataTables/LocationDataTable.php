@@ -23,8 +23,8 @@ class LocationDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function($query){
-                $edit = '<a href="'.route('admin.category.edit',$query->id).'" class="btn btn-lg btn-primary"><i class="fas fa-edit"></i></a>';
-                $delete = '<a href="'.route('admin.category.destroy',$query->id).'" class="delete-item btn btn-lg btn-danger"><i class="fas fa-trash"></i></a>';
+                $edit = '<a href="'.route('admin.location.edit',$query->id).'" class="btn btn-lg btn-primary"><i class="fas fa-edit"></i></a>';
+                $delete = '<a href="'.route('admin.location.destroy',$query->id).'" class="delete-item btn btn-lg btn-danger"><i class="fas fa-trash"></i></a>';
 
                 return $edit.$delete;
             })

@@ -104,19 +104,23 @@
                 if (result.isConfirmed) {
 
                     $.ajax({
-                        methods: 'DELETE',
+                        method: 'DELETE',
                         url: url,
-                        data: {
-                            _token: "{{ csrf_token() }}"
-                        },
+                        data: { _token: "{{ csrf_token() }}"},
                         success: function(response) {
-                            if (response.status == 'success') {
+                            if (response.status === 'success') {
                                 Swal.fire(
                                     'Deleted!',
                                     response.message,
                                     'success'
                                 )
                                 window.location.reload();
+                            }else if (response.status === 'error'){
+                                Swal.fire(
+                                    'Something Went Wrong!',
+                                    response.message,
+                                    'error'
+                                )
                             }
                         },
                         error: function(xhr, status, error) {

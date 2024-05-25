@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\LocationStoreRequest;
 use App\Models\Location;
 use Illuminate\Http\Request;
+use Response;
 use Str;
 class LocationController extends Controller
 {
@@ -57,7 +58,8 @@ class LocationController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $location = Location::findOrFail($id);
+        return view('admin.location.edit',compact('location'));
     }
 
     /**
@@ -65,7 +67,17 @@ class LocationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $location =  Location::findOrFail($id);
+        $location->name = $request->name;
+        $location->slug = Str::slug($request->name);
+        $location->show_at_home = $request->show_at_home;
+        $location->status = $request->status;
+        $location->save();
+
+        toastr()->success('Location Updated Successfully');
+
+        // return redirect()->route('admin.category.index');
+        return to_route('admin.location.index');
     }
 
     /**
@@ -73,6 +85,14 @@ class LocationController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            Location::findOrFail($id)->delete();
+
+            return response(['status'=> 'success','message'=>'Deleted Successfully']);
+        } catch (\Exception $e) {
+            logger($e);
+            return response(['status'=> 'error','message'=>$e->getMessage()]);
+        }
+
     }
 }

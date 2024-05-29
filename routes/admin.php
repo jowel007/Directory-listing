@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\AmenitiesController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HeroController;
@@ -39,7 +40,8 @@ Route::group([
     /** Location Routes */
     Route::resource('/location', LocationController::class);
 
-
+    /** Amenities Routes */
+    Route::resource('/amenity', AmenitiesController::class);
 
 });
 

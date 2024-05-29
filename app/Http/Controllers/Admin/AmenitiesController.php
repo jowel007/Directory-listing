@@ -21,7 +21,7 @@ class AmenitiesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.amenity.create');
     }
 
     /**

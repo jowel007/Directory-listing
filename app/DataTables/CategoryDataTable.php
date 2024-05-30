@@ -40,7 +40,7 @@ class CategoryDataTable extends DataTable
                 }else {
                     return "<span class='badge badge-danger'>No</span>";
                 }
-                
+
             })
             ->addColumn('status', function($query){
                 if($query->status == 1){
@@ -94,11 +94,11 @@ class CategoryDataTable extends DataTable
             Column::make('name')->width(200),
             Column::make('icon')->width(200),
             Column::make('background'),
-            
+
             Column::make('show_at_home'),
             Column::make('status'),
 
-            
+
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)

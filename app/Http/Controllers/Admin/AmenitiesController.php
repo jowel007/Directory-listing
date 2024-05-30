@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\DataTables\AmenityDataTable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\AmenityStoreRequest;
+use App\Http\Requests\Admin\AmenityUpdateRequest;
 use App\Models\Amenitie;
 use Illuminate\Http\Request;
 use Str;
@@ -47,25 +48,40 @@ class AmenitiesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
+    // public function show(string $id)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        //
+        $amenity = Amenitie::findOrFail($id);
+        return view('admin.amenity.edit',compact('amenity'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(AmenityUpdateRequest $request, string $id)
     {
-        //
+        // dd($request->all());
+        $amenity = Amenitie::findOrFail($id);
+        // $amenity->icon = $request->fails('icon') ? $request->icon : $amenity->icon;
+        // Check if 'icon' field exists and is not null
+        if ($request->has('icon') && !is_null($request->icon)) {
+            $amenity->icon = $request->icon;
+        }
+        $amenity->name = $request->name;
+        $amenity->slug = Str::slug($request->name);
+        $amenity->status = $request->status;
+        $amenity->save();
+
+        toastr()->success('Updated Successfully');
+
+        return to_route('admin.amenity.index');
     }
 
     /**
@@ -73,6 +89,13 @@ class AmenitiesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            Amenitie::findOrFail($id)->delete();
+
+            return response(['status'=> 'success','message'=>'Deleted Successfully']);
+        } catch (\Exception $e) {
+            logger($e);
+            return response(['status'=> 'error','message'=>$e->getMessage()]);
+        }
     }
 }

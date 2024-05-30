@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\DataTables\AmenityDataTable;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\AmenityStoreRequest;
+use App\Models\Amenitie;
 use Illuminate\Http\Request;
+use Str;
 
 class AmenitiesController extends Controller
 {
@@ -27,9 +30,18 @@ class AmenitiesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AmenityStoreRequest $request)
     {
-        //
+        $amenity = new Amenitie();
+        $amenity->icon = $request->icon;
+        $amenity->name = $request->name;
+        $amenity->slug = Str::slug($request->name);
+        $amenity->status = $request->status;
+        $amenity->save();
+
+        toastr()->success('Created Successfully');
+
+        return to_route('admin.amenity.index');
     }
 
     /**

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AmenitiesController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HeroController;
+use App\Http\Controllers\Admin\ListingController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\ProfileController;
 
@@ -42,6 +43,9 @@ Route::group([
 
     /** Amenities Routes */
     Route::resource('/amenity', AmenitiesController::class);
+
+    /** Listing Routes */
+    Route::resource('/listing', ListingController::class);
 
 });
 

@@ -33,7 +33,7 @@
                                             <label for="">Image <span class="text-danger">*</span> </label>
                                             <div id="image-preview" class="image-preview">
                                                 <label for="image-upload" id="image-label">Choose File</label>
-                                                <input type="file" name="image" id="image-upload">
+                                                <input type="file" name="image" id="image-upload" required>
                                             </div>
                                         </div>
                                     </div>
@@ -44,7 +44,7 @@
                                             </label>
                                             <div id="image-preview-2" class="image-preview">
                                                 <label for="image-upload-2" id="image-label-2">Choose File</label>
-                                                <input type="file" name="image" id="image-upload-2">
+                                                <input type="file" name="thumbnail_image" id="image-upload-2" required>
                                             </div>
                                         </div>
                                     </div>
@@ -52,7 +52,7 @@
 
                                 <div class="from-group">
                                     <label for="">Title <span class="text-danger">*</span></label>
-                                    <input type="text" name="title" value="" id="" class="form-control">
+                                    <input type="text" name="title" value="" id="" class="form-control" required>
                                 </div>
 
                                 &nbsp;
@@ -60,7 +60,7 @@
                                     <div class="col-md-6">
                                         <div class="from-group">
                                             <label for="">Category <span class="text-danger">*</span></label>
-                                            <select name="status" id="" class="form-control">
+                                            <select name="category" id="" class="form-control" required>
                                                 <option value="">Select</option>
                                                 @foreach ($categories as $category)
                                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -72,7 +72,7 @@
                                     <div class="col-md-6">
                                         <div class="from-group">
                                             <label for="">Location <span class="text-danger">*</span></label>
-                                            <select name="status" id="" class="form-control">
+                                            <select name="location" id="" class="form-control" required>
                                                 <option value="">Select</option>
                                                 @foreach ($locations as $location)
                                                     <option value="{{ $location->id }}">{{ $location->name }}</option>
@@ -86,18 +86,18 @@
                                 &nbsp;
                                 <div class="from-group">
                                     <label for="">Address <span class="text-danger">*</span></label>
-                                    <input type="text" name="address" value="" id="" class="form-control">
+                                    <input type="text" name="address" value="" id="" class="form-control" required>
                                 </div>
                                 &nbsp;
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="">Phone <span class="text-danger">*</span></label>
-                                        <input type="text" name="phone" value="" id="" class="form-control">
+                                        <input type="text" name="phone" value="" id="" class="form-control" required>
                                     </div>
 
                                     <div class="col-md-6">
                                         <label for="">Email <span class="text-danger">*</span></label>
-                                        <input type="text" name="email" value="" id="" class="form-control">
+                                        <input type="text" name="email" value="" id="" class="form-control" required>
                                     </div>
                                 </div>
                                 &nbsp;
@@ -149,7 +149,7 @@
                                 &nbsp;
                                 <div class="form-group">
                                     <label>Aminities</label>
-                                    <select class="form-control select2" multiple="">
+                                    <select class="form-control select2" multiple="" name="amenities[]">
                                         @foreach ($amenities as $amenity)
                                             <option value="{{ $amenity->id }}">{{ $amenity->name }}</option>
                                         @endforeach
@@ -158,8 +158,8 @@
 
 
                                 <div class="from-group">
-                                    <label for="">Description<span class="text-danger"></span></label>
-                                   <textarea name="description" class="summernote"></textarea>
+                                    <label for="">Description<span class="text-danger">*</span></label>
+                                   <textarea name="description" class="summernote" required></textarea>
                                 </div>
                                 &nbsp;
 
@@ -185,7 +185,7 @@
                                     <div class="col-md-4">
                                         <div class="from-group">
                                             <label for="">Status <span class="text-danger">*</span></label>
-                                            <select name="status" id="" class="form-control">
+                                            <select name="status" id="" class="form-control" required>
                                                 <option value="">Select</option>
                                                 <option value="1">Active</option>
                                                 <option value="0">InActive</option>
@@ -196,7 +196,7 @@
                                     <div class="col-md-4">
                                         <div class="from-group">
                                             <label for="">Is Featured <span class="text-danger"></span></label>
-                                            <select name="is_verified" id="" class="form-control">
+                                            <select name="is_verified" id="" class="form-control" required>
                                                 <option value="">Select</option>
                                                 <option value="0">No</option>
                                                 <option value="1">Yes</option>
@@ -207,7 +207,7 @@
                                     <div class="col-md-4">
                                         <div class="from-group">
                                             <label for="">Is Verified <span class="text-danger"></span></label>
-                                            <select name="is_featured" id="" class="form-control">
+                                            <select name="is_featured" id="" class="form-control" required>
                                                 <option value="">Select</option>
                                                 <option value="0">No</option>
                                                 <option value="1">Yes</option>

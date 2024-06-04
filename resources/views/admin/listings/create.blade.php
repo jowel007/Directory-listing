@@ -92,14 +92,12 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="">Phone <span class="text-danger">*</span></label>
-                                        <input type="text" name="phone" value="" id=""
-                                            class="form-control">
+                                        <input type="text" name="phone" value="" id="" class="form-control">
                                     </div>
 
                                     <div class="col-md-6">
                                         <label for="">Email <span class="text-danger">*</span></label>
-                                        <input type="text" name="email" value="" id=""
-                                            class="form-control">
+                                        <input type="text" name="email" value="" id="" class="form-control">
                                     </div>
                                 </div>
                                 &nbsp;
@@ -107,8 +105,7 @@
                                     <div class="col-md-12">
                                         <div class="from-group">
                                             <label for="">Website <span class="text-danger"></span></label>
-                                            <input type="text" name="website" value="" id=""
-                                                class="form-control">
+                                            <input type="text" name="website" value="" id="" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -117,39 +114,34 @@
                                     <div class="col-md-3">
                                         <div class="from-group">
                                             <label for="">Facebook Link <span class="text-danger"></span></label>
-                                            <input type="text" name="facebook_link" value="" id=""
-                                                class="form-control">
+                                            <input type="text" name="facebook_link" value="" id="" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="from-group">
                                             <label for="">X Link <span class="text-danger"></span></label>
-                                            <input type="text" name="x_link" value="" id=""
-                                                class="form-control">
+                                            <input type="text" name="x_link" value="" id="" class="form-control">
                                         </div>
                                     </div>
 
                                     <div class="col-md-3">
                                         <div class="from-group">
                                             <label for="">Linkdin Link <span class="text-danger"></span></label>
-                                            <input type="text" name="x_link" value="" id=""
-                                                class="form-control">
+                                            <input type="text" name="x_link" value="" id="" class="form-control">
                                         </div>
                                     </div>
 
                                     <div class="col-md-3">
                                         <div class="from-group">
                                             <label for="">Whatsapp Link <span class="text-danger"></span></label>
-                                            <input type="text" name="whatsapp_link" value="" id=""
-                                                class="form-control">
+                                            <input type="text" name="whatsapp_link" value="" id="" class="form-control">
                                         </div>
                                     </div>
-
+                                    &nbsp;
                                     <div class="col-md-12">
                                         <div class="from-group">
                                             <label for="">Attachment<span class="text-danger"></span></label>
-                                            <input type="file" name="file" value="" id=""
-                                                class="form-control">
+                                            <input type="file" name="file" value="" id="" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -158,32 +150,77 @@
                                 <div class="form-group">
                                     <label>Aminities</label>
                                     <select class="form-control select2" multiple="">
-                                        <option>Option 1</option>
-                                        <option>Option 2</option>
-                                        <option>Option 3</option>
-                                        <option>Option 4</option>
-                                        <option>Option 5</option>
-                                        <option>Option 6</option>
+                                        @foreach ($amenities as $amenity)
+                                            <option value="{{ $amenity->id }}">{{ $amenity->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 
 
+                                <div class="from-group">
+                                    <label for="">Description<span class="text-danger"></span></label>
+                                   <textarea name="description" class="summernote"></textarea>
+                                </div>
+                                &nbsp;
 
-
-
-
-
-
+                                <div class="form-group">
+                                    <label for="">Google Map Embded Code<span class="text-danger"></span></label>
+                                    <textarea name="google_map_emded_code" class="form-control"></textarea>
+                                </div>
 
                                 &nbsp;
                                 <div class="from-group">
-                                    <label for="">Status <span class="text-danger">*</span></label>
-                                    <select name="status" id="" class="form-control">
-                                        <option value="">Select</option>
-                                        <option value="1">Active</option>
-                                        <option value="0">InActive</option>
-                                    </select>
+                                    <label for="">Seo Title<span class="text-danger"></span></label>
+                                    <input type="text" name="seo_title" value="" id="" class="form-control">
                                 </div>
+                                &nbsp;
+                                <div class="from-group">
+                                    <label for="">Seo Description<span class="text-danger"></span></label>
+                                    <textarea name="seo_description" class="form-control"></textarea>
+                                </div>
+
+                                &nbsp;
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="from-group">
+                                            <label for="">Status <span class="text-danger">*</span></label>
+                                            <select name="status" id="" class="form-control">
+                                                <option value="">Select</option>
+                                                <option value="1">Active</option>
+                                                <option value="0">InActive</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-4">
+                                        <div class="from-group">
+                                            <label for="">Is Featured <span class="text-danger"></span></label>
+                                            <select name="is_verified" id="" class="form-control">
+                                                <option value="">Select</option>
+                                                <option value="0">No</option>
+                                                <option value="1">Yes</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="from-group">
+                                            <label for="">Is Verified <span class="text-danger"></span></label>
+                                            <select name="is_featured" id="" class="form-control">
+                                                <option value="">Select</option>
+                                                <option value="0">No</option>
+                                                <option value="1">Yes</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+                                
+                                
 
                                 &nbsp;
                                 <div class="from-group">

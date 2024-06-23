@@ -127,7 +127,7 @@
                                     <div class="col-md-3">
                                         <div class="from-group">
                                             <label for="">Linkdin Link <span class="text-danger"></span></label>
-                                            <input type="text" name="x_link" value="" id="" class="form-control">
+                                            <input type="text" name="linkedin_link" value="" id="" class="form-control">
                                         </div>
                                     </div>
 
@@ -192,7 +192,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="col-md-4">
                                         <div class="from-group">
                                             <label for="">Is Featured <span class="text-danger"></span></label>
@@ -219,8 +219,8 @@
 
 
 
-                                
-                                
+
+
 
                                 &nbsp;
                                 <div class="from-group">

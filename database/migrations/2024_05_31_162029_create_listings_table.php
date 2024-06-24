@@ -34,7 +34,7 @@ return new class extends Migration
             $table->boolean('is_featured')->default(0);
             $table->integer('view')->default(0);
             $table->text('google_map_emded_code')->nullable(0);
-            $table->string('file');
+            $table->string('file')->nullable();
             $table->date('expire_date');
             $table->string('seo_title');
             $table->string('seo_description');

@@ -14,9 +14,9 @@ class ListingStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'image' => ['required', 'image', 'max:3000'],
-            'thumbnail_image' => ['required', 'image', 'max:3000'],
-            'title' => ['required', 'string', 'max:255'],
+            'image' => ['required', 'image', 'max:5000'],
+            'thumbnail_image' => ['required', 'image', 'max:5000'],
+            'title' => ['required', 'string', 'max:255','unique:listings,title'],
             'category' => ['required','integer'],
             'location' => ['required','integer'],
             'address' => ['required','string','max:255'],
@@ -27,8 +27,8 @@ class ListingStoreRequest extends FormRequest
             'x_link' => ['nullable'],
             'linkedin_link' => ['nullable'],
             'whatsapp_link' => ['nullable'],
-            'file' => ['nullable','mimes:png,jpg,csv,pdf'],
-            'amenities.*' => ['integer'],
+            'file' => ['nullable','mimes:png,jpg,csv,pdf','max:10000'],
+            'amenities.*' => ['integer','max:255'],
             'description' => ['required'],
             'google_map_emded_code' => ['nullable'],
             'seo_title' => ['nullable','string','max:255'],
@@ -36,12 +36,6 @@ class ListingStoreRequest extends FormRequest
             'status' => ['required','boolean'],
             'is_verified' => ['required','boolean'],
             'is_featured' => ['required','boolean'],
-
-
-
-
-
-
         ];
     }
 }

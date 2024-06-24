@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Location;
 use Illuminate\Http\Request;
 use App\Models\Listing;
+use App\Models\ListingAmenity;
 use App\Traits\FileUploadTraits;
 use Auth;
 use Str;
@@ -69,6 +70,14 @@ class ListingController extends Controller
         $listing->is_featured = $request->is_featured;
         $listing->expire_date = date('Y-m-d');
         $listing->save();
+
+
+        foreach ($request->amenities as $amenityId) {
+            $amenity = new ListingAmenity();
+            $amenity->listing_id = $listing->id;
+            $amenity->amenity_id = $amenityId;
+            $amenity->save();
+        }
 
         toastr()->success('Created successfully');
         return to_route('admin.listing.index');

@@ -23,6 +23,44 @@ class ListingDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', 'listing.action')
+            ->addColumn('category', function($query){
+                return $query->category->name;
+            })
+            ->addColumn('location', function($query){
+                return $query->location->name;
+            })
+
+            ->addColumn('status', function($query){
+                if($query->status == 1){
+                    return "<span class='badge badge-info'>Active</span>";
+                }else {
+                    return "<span class='badge badge-danger'>InActive</span>";
+                }
+            })
+
+            ->addColumn('action', function($query){
+                $edit = '<a href="'.route('admin.listing.edit',$query->id).'" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>';
+                $delete = '<a href="'.route('admin.listing.destroy',$query->id).'" class="delete-item btn btn-sm btn-danger ml-2"><i class="fas fa-trash"></i></a>';
+
+                $button = '<div class="btn-group dropleft">
+                      <button type="button" class="btn btn-sm btn-dark dropdown-toggle ml-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-cog"></i>
+                      </button>
+                      <div class="dropdown-menu dropleft" x-placement="left-start" style="position: absolute; transform: translate3d(-2px, 0px, 0px); top: 0px; left: 0px; will-change: transform;">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated link</a>
+                      </div>
+                    </div>';
+
+
+
+                return $edit.$delete.$button;
+            })
+
+            ->rawColumns(['status','action'])
             ->setRowId('id');
     }
 
@@ -44,7 +82,7 @@ class ListingDataTable extends DataTable
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
-                    ->orderBy(1)
+                    ->orderBy(0)
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),
@@ -62,15 +100,18 @@ class ListingDataTable extends DataTable
     public function getColumns(): array
     {
         return [
+
+            Column::make('id'),
+            Column::make('title'),
+            Column::make('category'),
+            Column::make('location'),
+            Column::make('status'),
+
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(60)
+                  ->width(220)
                   ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
         ];
     }
 

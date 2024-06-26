@@ -34,7 +34,7 @@
                                             <label for="">Image <span class="text-danger">*</span> </label>
                                             <div id="image-preview" class="image-preview">
                                                 <label for="image-upload" id="image-label">Choose File</label>
-                                                <input type="file" name="image" id="image-upload" required>
+                                                <input type="file" name="image" id="image-upload">
                                                 <input type="hidden" name="old_image" value="{{ $listing->image }}">
                                             </div>
                                         </div>
@@ -46,7 +46,7 @@
                                             </label>
                                             <div id="image-preview-2" class="image-preview-2">
                                                 <label for="image-upload-2" id="image-label-2">Choose File</label>
-                                                <input type="file" name="thumbnail_image" id="image-upload-2" required>
+                                                <input type="file" name="thumbnail_image" id="image-upload-2">
                                                 <input type="hidden" name="old_thumbnail_image"
                                                     value="{{ $listing->thumbnail_image }}">
                                             </div>
@@ -165,7 +165,9 @@
 
                                         <div class="from-group">
                                             <label for="">Attachment<span class="text-danger">*</span></label>
-                                            <input type="file" name="file" value="{{ $listing->facebook_link }}"
+                                            <input type="file" name="file" value="{{ $listing->file }}"
+                                                class="form-control">
+                                                <input type="hidden" name="old_file" value="{{ $listing->file }}"
                                                 class="form-control">
                                         </div>
                                     </div>
@@ -250,7 +252,7 @@
 
                                 &nbsp;
                                 <div class="from-group">
-                                    <button type="submit" class="btn btn-primary">Create</button>
+                                    <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
 
 

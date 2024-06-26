@@ -267,6 +267,13 @@
 
 @push('scripts')
     <script>
+        var listingAmenities = {!! json_encode($listingAmenities) !!}
+        // console.log(listingAmenities);
+        $('.select2').select2().val(listingAmenities).trigger("change");
+
+
+
+
         $(document).ready(function() {
             $('.image-preview').css({
                 'background-image': 'url({{ asset($listing->image) }})',

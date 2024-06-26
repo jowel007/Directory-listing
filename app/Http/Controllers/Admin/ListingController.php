@@ -99,10 +99,15 @@ class ListingController extends Controller
     {
         $listing = Listing::findOrFail($id);
 
+        $listingAmenities = ListingAmenity::where('listing_id', $listing->id)
+                                            ->pluck('amenity_id')
+                                            ->toArray();
+        // dd($listingAmenities);
+
         $categories = Category::all();
         $locations = Location::all();
         $amenities = Amenitie::all();
-        return view('admin.listings.edit',compact('categories','locations','amenities','listing'));
+        return view('admin.listings.edit',compact('categories','locations','amenities','listing','listingAmenities'));
     }
 
     /**

@@ -24,7 +24,8 @@
 
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('admin.listing-image-gallery.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('admin.listing-image-gallery.store') }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label for="listing_id">Image <code>( Multi Image Supported )</code> </label>
@@ -32,7 +33,7 @@
                                     <input type="hidden" value="{{ request()->id }}" name="listing_id">
                                 </div>
                                 <div class="form-group">
-                                   <button type="submit" class="btn btn-primary">Uploads</button>
+                                    <button type="submit" class="btn btn-primary">Uploads</button>
                                 </div>
 
                             </form>
@@ -55,34 +56,26 @@
                         <div class="card-body">
                             <table class="table">
                                 <thead>
-                                  <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">First</th>
-                                    <th scope="col">Last</th>
-                                    <th scope="col">Handle</th>
-                                  </tr>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Image</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                  <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                  </tr>
-                                  <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                  </tr>
-                                  <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                  </tr>
+                                    @foreach ($images as $image)
+                                        <tr>
+                                            <th scope="row">{{ ++$loop->index }}</th>
+                                            <td>
+                                                <img src="{{ asset($image->image) }}" alt="" style="height: 160px; width: 180px;">
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('admin.listing-image-gallery.destroy', $image->id) }}" class="delete-item btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
-                              </table>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -93,5 +86,4 @@
 @endsection
 
 @push('scripts')
-
 @endpush

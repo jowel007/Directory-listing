@@ -6,30 +6,33 @@ use App\Http\Controllers\Controller;
 use App\Models\ListingImageGallery;
 use App\Traits\FileUploadTraits;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+
 
 class ListingImageGalleryController extends Controller
 {
     use FileUploadTraits;
 
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.listings.listing-image-gallery.index');
+        $images = ListingImageGallery::where('listing_id', $request->id)->get();
+        return view('admin.listings.listing-image-gallery.index', compact('images'));
     }
     public function store(Request $request)
     {
         // dd($request->all());
         $request->validate([
             'images' => ['required'],
-            'images.*' => ['image','max:10000'],
+            'images.*' => ['image', 'max:10000'],
             'listing_id' => ['required']
-        ],[
+        ], [
             'images.*.image' => 'One or more selected files are not valid image.',
             'images.*.max' => 'The :attribute may not be greater than 10MB.'
         ]);
 
         $imagePaths = $this->uploadMultipleImage($request, 'images');
 
-        foreach($imagePaths as $path){
+        foreach ($imagePaths as $path) {
             $image = new ListingImageGallery();
             $image->listing_id = $request->listing_id;
             $image->image = $path;
@@ -41,35 +44,17 @@ class ListingImageGalleryController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function destroy(string $id) : Response
     {
-        //
-    }
+        try {
+            $image = ListingImageGallery::findOrFail($id);
+            $this->deleteFile($image->image);
+            $image->delete();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+            return response(['status' => 'success', 'message' => 'Deleted Successfully']);
+        } catch (\Exception $e) {
+            logger($e);
+            return response(['status' => 'error', 'message' => $e->getMessage()]);
+        }
     }
 }

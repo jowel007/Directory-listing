@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\ListingImageGallery;
+use App\Traits\FileUploadTraits;
 use Illuminate\Http\Request;
 
 class ListingImageGalleryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    use FileUploadTraits;
+
     public function index()
     {
         return view('admin.listings.listing-image-gallery.index');
@@ -19,11 +20,25 @@ class ListingImageGalleryController extends Controller
         // dd($request->all());
         $request->validate([
             'images' => ['required'],
-            'images.*' => ['image','max:10000']
+            'images.*' => ['image','max:10000'],
+            'listing_id' => ['required']
         ],[
             'images.*.image' => 'One or more selected files are not valid image.',
             'images.*.max' => 'The :attribute may not be greater than 10MB.'
         ]);
+
+        $imagePaths = $this->uploadMultipleImage($request, 'images');
+
+        foreach($imagePaths as $path){
+            $image = new ListingImageGallery();
+            $image->listing_id = $request->listing_id;
+            $image->image = $path;
+            $image->save();
+        }
+
+        toastr()->success('Uploaded Successfully !');
+
+        return redirect()->back();
     }
 
     /**

@@ -14,21 +14,16 @@ class ListingImageGalleryController extends Controller
     {
         return view('admin.listings.listing-image-gallery.index');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $request->validate([
+            'images' => ['required'],
+            'images.*' => ['image','max:10000']
+        ],[
+            'images.*.image' => 'One or more selected files are not valid image.',
+            'images.*.max' => 'The :attribute may not be greater than 10MB.'
+        ]);
     }
 
     /**

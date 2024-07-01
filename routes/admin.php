@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\ListingController;
 // use App\Http\Controllers\Admin\ListingImageGallery;
 use App\Http\Controllers\Admin\ListingImageGalleryController;
+use App\Http\Controllers\Admin\ListingScheduleController;
 use App\Http\Controllers\Admin\ListingVideoGallaryController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\ProfileController;
@@ -55,6 +56,9 @@ Route::group([
 
     /** Listing image gallery Routes */
     Route::resource('/listing-video-gallery', ListingVideoGallaryController::class);
+
+    /** Listing Schedule Routes */
+    Route::get('/listing-schedule', [ListingScheduleController::class,'index'])->name('listing-schedule.index');
 
 });
 

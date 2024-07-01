@@ -68,7 +68,7 @@
                                         <tr>
                                             <th scope="row">{{ ++$loop->index }}</th>
                                             <td>
-                                                <img src="" alt="">
+                                                <img width="200px" src="{{ getThumbnail($video->video_url) }}" alt="">
                                             </td>
                                             <td>
                                                 <a target="_blank" href="{{ $video->video_url }}">{{ $video->video_url }}</a>

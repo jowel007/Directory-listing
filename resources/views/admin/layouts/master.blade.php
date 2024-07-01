@@ -18,6 +18,8 @@
 
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/modules/select2/dist/css/select2.min.css">
 
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Template CSS -->
@@ -74,6 +76,8 @@
     <script src="{{ asset('admin') }}/assets/js/custom.js"></script>
 
     <script src="{{ asset('admin') }}/assets/modules/select2/dist/js/select2.full.min.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <script>
         @if ($errors->all())
             @foreach ($errors->all() as $error)

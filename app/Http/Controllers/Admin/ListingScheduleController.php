@@ -37,6 +37,12 @@ class ListingScheduleController extends Controller
         return to_route('admin.listing-schedule.index', ['id' => $listingId]);
     }
 
+    public function edit(string $id) 
+    {
+       $schedule = ListingSchedule::findOrFail($id);
+       return view('admin.listings.listing-schedule.edit',compact('schedule'));
+    }
+
 
 
 }

@@ -5,15 +5,17 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\ListingVideoGallary;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ListingVideoGallaryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.listings.listing-video-gallery.index');
+        $videos = ListingVideoGallary::where('listing_id', $request->id)->get();
+        return view('admin.listings.listing-video-gallery.index',compact('videos'));
     }
 
     /**
@@ -45,35 +47,17 @@ class ListingVideoGallaryController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function destroy(string $id) :Response
     {
-        //
-    }
+        try {
+            $video = ListingVideoGallary::findOrFail($id);
+            $video->delete();
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+            return response(['status' => 'success', 'message' => 'Deleted Successfully']);
+        } catch (\Exception $e) {
+            logger($e);
+            return response(['status' => 'error', 'message' => $e->getMessage()]);
+        }
     }
 }

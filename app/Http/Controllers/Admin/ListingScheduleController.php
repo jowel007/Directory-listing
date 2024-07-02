@@ -15,19 +15,10 @@ use App\Models\Listing;
 
 class ListingScheduleController extends Controller
 {
-    // public function index(ListingScheduleDataTable $dataTable,$listingId)
-    // {
-    //     // $dataTable->with('listingId', $listingId);
-    //     // return $dataTable->render('admin.listings.listing-schedule.index');
-    //     return view('admin.listings.listing-schedule.index',compact('listingId'));
-    // }
-
-
-    public function index(ListingScheduleDataTable $dataTable, string $listingId) : view | JsonResponse
+    public function index(ListingScheduleDataTable $dataTable, string $listingId)
     {
         $dataTable->with('listingId', $listingId);
-        $listingTitle = Listing::select('title')->where('id', $listingId)->first();
-        return $dataTable->render('admin.listing.listing-schedule.index', compact('listingId','listingTitle'));
+        return $dataTable->render('admin.listings.listing-schedule.index',compact('listingId'));
     }
 
     public function create(Request $request, string $listingId){
@@ -49,7 +40,7 @@ class ListingScheduleController extends Controller
         return to_route('admin.listing-schedule.index', $listingId);
     }
 
-    public function edit(string $id) 
+    public function edit(string $id)
     {
        $schedule = ListingSchedule::findOrFail($id);
        return view('admin.listings.listing-schedule.edit',compact('schedule'));

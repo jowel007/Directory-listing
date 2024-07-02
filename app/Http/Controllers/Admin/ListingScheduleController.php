@@ -18,7 +18,8 @@ class ListingScheduleController extends Controller
     public function index(ListingScheduleDataTable $dataTable, string $listingId)
     {
         $dataTable->with('listingId', $listingId);
-        return $dataTable->render('admin.listings.listing-schedule.index',compact('listingId'));
+        $listing_schedule = Listing::select('title')->where('id',$listingId)->first();
+        return $dataTable->render('admin.listings.listing-schedule.index',compact('listingId','listing_schedule'));
     }
 
     public function create(Request $request, string $listingId){

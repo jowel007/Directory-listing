@@ -11,18 +11,18 @@
                 <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard.index') }}">Dashboard</a></div>
                 <div class="breadcrumb-item">Listing</div>
                 <div class="breadcrumb-item">Listing Schedule</div>
+
             </div>
         </div>
 
         <div class="section-body">
-
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>All Listing</h4>
+                            <h4>All Schedules ( {{ $listingTitle->title }} )</h4>
                             <div class="card-header-action">
-                                <a href="{{ route('admin.listing-schedule.create', request()->id) }}" class="btn btn-info"><i class="fas fa-plus"></i> Create Category</a>
+                                <a href="{{ route('admin.listing-schedule.create', $listingId) }}" class="btn btn-primary"><i class="fas fa-plus"></i> Create</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -31,8 +31,8 @@
                     </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </section>
 @endsection
 
